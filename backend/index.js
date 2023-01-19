@@ -12,8 +12,8 @@ const JWTSECRETKEY = "secret"
 app.use(express.json())
 app.use(cors())
 
-const data = User.find();
-console.log(data)
+// const data = User.find();
+// console.log(data)
 
 
 
