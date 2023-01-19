@@ -41,7 +41,7 @@ function NavBar() {
 
                            <Nav.Link >
                               <Link className='before-login'>
-                                 <span>Welcome -  {auth.body.name}</span> </Link>
+                                 <span>Welcome  {auth.body.name} </span> </Link>
                            </Nav.Link>
                         </Nav.Item>
 

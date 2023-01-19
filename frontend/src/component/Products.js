@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Form, Button } from "react-bootstrap";
+import { useNavigate } from 'react-router';
 
 export default function Products() {
 
@@ -7,6 +8,7 @@ export default function Products() {
    const [productPrice, setProductPrice] = useState('');
    const [productCategory, setProductCategory] = useState('');
    const [productCompany, setProductCompany] = useState('');
+   const navigate = useNavigate();
    const [error, setError] = useState(false);
 
    const auth = localStorage.getItem('user');
@@ -30,8 +32,10 @@ export default function Products() {
 
          productData = await productData.json();
          console.log(productData);
-         if (productData.success) {
-            alert('record successfully created')
+         if (productData.sucess) {
+            alert('record successfully created');
+            navigate('/list-products');
+
          }
          else {
             alert('something went wrong')

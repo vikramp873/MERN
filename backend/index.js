@@ -12,15 +12,19 @@ const JWTSECRETKEY = "secret"
 app.use(express.json())
 app.use(cors())
 
+const data = User.find();
+console.log(data)
 
 
-app.get('/getData', async (req, resp) => {
-   let data = await User.find()
-   console.log(data);
-})
+
+// app.get('/getData', async (req, resp) => {
+//    let data = await User.find()
+//    console.log(data);
+// })
 
 app.post("/signup", async (req, resp) => {
 
+   console.log('======>', req.body)
    let email = {
       email: req.body.email
    }
@@ -33,7 +37,7 @@ app.post("/signup", async (req, resp) => {
    else {
       let data = new User(req.body);
       data = await data.save()
-      console.log(data)
+      console.log('==>>>>>>>>', data)
 
       resp.send({ result: "success", success: true });
    }
@@ -41,6 +45,7 @@ app.post("/signup", async (req, resp) => {
 
 
 app.post("/login", async (req, resp) => {
+   console.log(req.body)
 
    if (req.body.email && req.body.password) {
       let user = await User.findOne(req.body).select("-password");
